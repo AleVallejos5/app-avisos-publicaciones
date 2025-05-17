@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Publicaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="!mostrandoFormulario; else formulario">
+  <app-aviso-lista
+      [avisos]= "agenda" 
+      (onDelete)="deleteAviso($event)"
+      (onAddAviso)="mostrarFormulario()"/>
+</ng-container>
+
+<ng-template #formulario>
+  <app-aviso-formulario
+    (onClose)="cerrarFormulario()"
+    (onSave)="guardarAviso($event)"/>
+</ng-template>
+</ion-content>

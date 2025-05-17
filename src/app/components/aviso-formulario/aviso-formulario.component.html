@@ -1,0 +1,70 @@
+<ion-header [translucent]="true" slot="start">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="cerrarFormulario()" >
+      <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      Publicaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form #avisoForm="ngForm" (ngSubmit)="guardarAviso()">
+  <ion-item lines="none" >
+    <ion-input 
+      [(ngModel)]="aviso.titulo" 
+      name="titulo" 
+      label="Título" 
+      labelPlacement="stacked" 
+      required = "required"
+      minlength = "5"
+      #tituloInput="ngModel"
+      placeholder="Mascota perdida">
+    </ion-input>
+  </ion-item>
+
+  <!-- Mensaje de validación -->
+  <ion-note color="danger"
+            class="ion-margin-horizontal"
+            [hidden]="tituloInput.valid || tituloInput.pristine">
+            El título debe tener más de 5 caracteres minimo</ion-note>
+  <ion-item lines="none">
+    <ion-button size="small"
+                (click)="tomarFoto()">
+      <ion-icon slot="start" 
+                name="camera-outline">
+      </ion-icon>
+        FOTOGRAFÍA
+    </ion-button>
+  
+    <ion-thumbnail *ngFor="let f of fotos">
+        <ion-img [src] = "'data:image/jpeg;base64' +f "/>
+    </ion-thumbnail>
+  </ion-item>
+ 
+  <ion-item lines="none">
+    <ion-input 
+      [(ngModel)]="aviso.descripcion" 
+      name="descripcion" 
+      label="Descripción" 
+      labelPlacement="stacked" 
+      required = "required"
+      minlength = "20"
+      #descripcionInput="ngModel"
+      placeholder="Perrito salchicha perdido en esquina Manuel Montt con los Olivos...">
+    </ion-input>
+  </ion-item>
+  
+   <!-- Mensaje de validación -->
+  <ion-note color="danger"
+            class="ion-margin-horizontal"
+            [hidden]="descripcionInput.valid || descripcionInput.pristine">
+            Debe tener más de 20 caracteres</ion-note>
+
+  <ion-item lines="none">
+    <ion-button type="submit" 
+                [disabled]="!avisoForm.valid">
+                Guardar
+    </ion-button>
+  </ion-item>
+</form>
