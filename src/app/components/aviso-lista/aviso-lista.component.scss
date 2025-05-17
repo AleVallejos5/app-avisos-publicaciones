@@ -1,0 +1,70 @@
+ion-item {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --inner-padding-end: 8px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  ion-thumbnail {
+    --size: 80px;
+    --border-radius: 8px;
+    overflow: hidden;
+    
+    ion-img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .aviso-info {
+    margin-left: 12px;
+    
+    h2 {
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--ion-color-dark);
+    }
+    
+    .descripcion {
+      font-size: 0.9rem;
+      color: var(--ion-color-medium);
+      margin-bottom: 4px;
+    }
+    
+    .fecha {
+      display: flex;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--ion-color-secondary);
+      
+      ion-icon {
+        margin-right: 4px;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+ion-fab {
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+/* Estilos para el modal */
+ion-modal {
+  --width: 90%;
+  --max-width: 400px;
+  --border-radius: 16px;
+  
+  ion-content {
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+  }
+  
+  p {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+}

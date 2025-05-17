@@ -1,8 +1,8 @@
 // clase aviso para exportar a diferentes archivos
 
 export interface Aviso {
-    titulo: String
-    descripcion: String
+    titulo: string
+    descripcion: string
     imagen: string
     fecha: string
     

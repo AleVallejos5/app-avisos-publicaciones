@@ -1,40 +1,49 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { addIcons } from 'ionicons';
 import { Aviso } from 'src/app/modelo/aviso';
-import { trashOutline, add } from 'ionicons/icons';
+import { trashOutline, add, timeOutline } from 'ionicons/icons';
 import { IonHeader, IonTitle, IonList, IonItem, IonImg, IonLabel,
    IonIcon, IonButton, IonFabButton, IonFab, IonModal,
-    IonButtons, IonThumbnail } from "@ionic/angular/standalone";
+   IonThumbnail, IonContent, IonGrid, IonRow, IonCol, IonToolbar } from "@ionic/angular/standalone";
 import { FechaComunitariaPipe } from 'src/app/pipes/fecha.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-aviso-lista',
   templateUrl: './aviso-lista.component.html',
   styleUrls: ['./aviso-lista.component.scss'],
   standalone: true,
-  imports: [IonButtons, IonModal, IonFab, IonFabButton, IonButton, IonIcon, IonLabel,
-     IonImg, IonItem, IonList, IonTitle, IonHeader, IonThumbnail, FechaComunitariaPipe],
+  imports: [IonToolbar, IonCol, IonRow, IonGrid, IonContent, IonModal, IonFab, IonFabButton, IonButton, IonIcon, IonLabel,
+     IonImg, IonItem, IonList, IonTitle, IonHeader, IonThumbnail, FechaComunitariaPipe, CommonModule],
 })
 export class AvisoListaComponent  implements OnInit {
-  isModalPriceOpen: boolean = false
+  isModalPriceOpen: boolean = false;
+  avisoAEliminar: Aviso | null = null;
 
   //array para los qvisos que comienzan con el array vacio
   @Input() avisos: Aviso[] = []
   @Output() onDelete = new EventEmitter<Aviso>()
   @Output() onAddAviso = new EventEmitter<void>()
 
-  constructor() {addIcons({trashOutline, add});}
+  constructor() {addIcons({timeOutline,trashOutline,add});}
 
   ngOnInit() {}
 
-  clickEliminar(a:Aviso) {
-    this.onDelete.emit(a);
-    this.setModalPriceOpen(true)
+  clickEliminar(aviso: Aviso) {
+    this.avisoAEliminar = aviso;
+    this.setModalPriceOpen(true);
+  }
+
+  confirmarEliminacion() {
+    if (this.avisoAEliminar) {
+      this.onDelete.emit(this.avisoAEliminar);
+      this.setModalPriceOpen(false);
+      this.avisoAEliminar = null;
+    }
   }
 
   clickAgregar() {
     this.onAddAviso.emit();
-    console.log("ir al form" )
   }
 
   setModalPriceOpen(abierto:boolean) {
