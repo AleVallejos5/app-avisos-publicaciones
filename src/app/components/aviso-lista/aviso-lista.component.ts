@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { addIcons } from 'ionicons';
 import { Aviso } from 'src/app/modelo/aviso';
 import { trashOutline, add } from 'ionicons/icons';
-import { IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonImg, IonLabel,
+import { IonHeader, IonTitle, IonList, IonItem, IonImg, IonLabel,
    IonIcon, IonButton, IonFabButton, IonFab, IonModal,
     IonButtons, IonThumbnail } from "@ionic/angular/standalone";
 import { FechaComunitariaPipe } from 'src/app/pipes/fecha.pipe';
@@ -13,7 +13,7 @@ import { FechaComunitariaPipe } from 'src/app/pipes/fecha.pipe';
   styleUrls: ['./aviso-lista.component.scss'],
   standalone: true,
   imports: [IonButtons, IonModal, IonFab, IonFabButton, IonButton, IonIcon, IonLabel,
-     IonImg, IonItem, IonList, IonTitle, IonToolbar, IonHeader, IonThumbnail, FechaComunitariaPipe],
+     IonImg, IonItem, IonList, IonTitle, IonHeader, IonThumbnail, FechaComunitariaPipe],
 })
 export class AvisoListaComponent  implements OnInit {
   isModalPriceOpen: boolean = false
