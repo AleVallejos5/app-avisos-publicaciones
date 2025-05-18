@@ -18,9 +18,9 @@ export class AvisosService {
   }
 
   //metodo para guardar los avisos o publicaciones
-  async guardar(a:Aviso) {
+  async guardar(aviso:Aviso) {
     const listado:Aviso[] = await this.recuperarAvisos()
-    listado.push(a)
+    listado.push(aviso)
     Preferences.set({key: this.clave, value: JSON.stringify(listado)});
   }
 
@@ -28,13 +28,13 @@ export class AvisosService {
   buscarAviso(titulo:string) {}
 
   //metodo paraa la carga de la lista, para buscar el aviso que nesesito borrrar
-  async eliminar(a:Aviso): Promise<void> {
+  async eliminar(aviso:Aviso): Promise<void> {
     
     //Recuperar la lista
     const listado: Aviso[] = await this.recuperarAvisos();
 
     //aca se filtra la lista del aviso a eliminar
-    const nuevaLista = listado.filter(aviso => aviso.titulo !==a.titulo);
+    const nuevaLista = listado.filter(aviso => aviso.titulo !==aviso.titulo);
 
     //se guaraddara la lista ya actualizada
     await Preferences.set({ key: this.clave, value: JSON.stringify(nuevaLista)});
