@@ -1,4 +1,4 @@
-// clase aviso para exportar a diferentes archivos
+// aviso para exportar a diferentes archivos
 
 export interface Aviso {
     titulo: string

@@ -1,7 +1,8 @@
 <ion-list slot="start">
+  <!-- Lista de avisos con *ngFor -->
   <ion-item *ngFor="let aviso of avisos">
     <ion-thumbnail slot="start">
-      <!-- Mostrar la imagen del aviso si existe, de lo contrario mostrar imagen por defecto -->
+      <!-- Mostrar imagen del aviso si existe, de lo contrario mostrar imagen por defecto -->
       <ion-img 
         [src]="aviso.imagen || 'assets/imagen-default.jpg'" 
         [alt]="aviso.titulo || 'Imagen del aviso'">
@@ -13,11 +14,11 @@
       <p class="descripcion">{{ (aviso.descripcion || '') | slice:0:60 }}...</p>
       <p class="fecha">
         <ion-icon name="time-outline"></ion-icon>
-        {{ aviso.fecha | fechaComunitaria }}
+        {{ aviso.fecha | fechaComunitaria }} <!-- Pipe personalizado -->
       </p>
     </ion-label>
 
-    <!-- Botón de eliminar -->
+    <!-- Botón para eliminar -->
     <ion-button 
       size="small" 
       fill="clear" 
@@ -33,14 +34,14 @@
   </ion-item>  
 </ion-list>
 
-<!-- Botón flotante para agregar nuevo aviso -->
+<!-- Botón flotante para agregar -->
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="clickAgregar()" color="primary">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
-<!-- Modal de confirmación -->
+<!-- Modal de confirmación para eliminar -->
 <ion-modal [isOpen]="isModalPriceOpen">
   <ng-template>
     <ion-header>

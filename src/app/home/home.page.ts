@@ -27,7 +27,7 @@ export class HomePage implements OnInit{
 
   async deleteAviso(aviso:Aviso) {
     console.log("Eliminando el contacto de :" + aviso.titulo)
-    //llamar al metodo que eliminara los avisos
+    //llamar al metodo (al servicio) que eliminara los avisos
     await this.avisosService.eliminar(aviso)
     //refresca la lista actualizada
     this.agenda = await this.avisosService.recuperarAvisos()

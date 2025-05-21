@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Alterna entre lista y formulario -->
   <ng-container *ngIf="!mostrandoFormulario; else formulario">
   <app-aviso-lista
       [avisos]= "agenda" 

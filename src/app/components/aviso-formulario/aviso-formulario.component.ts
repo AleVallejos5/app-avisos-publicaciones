@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AvisoFormularioComponent  implements OnInit {
 
-  // cerrar el formulario
+  //cerrar el formulario
   @Output() onClose = new EventEmitter<void>();
   //guardar el aviso o publicacion
   @Output() onSave = new EventEmitter<Aviso>();
@@ -27,8 +27,9 @@ export class AvisoFormularioComponent  implements OnInit {
     titulo: '',
     descripcion: '',
     imagen: '',
-    fecha: new Date().toISOString()
+    fecha: new Date().toISOString() // Fecha actual automática
   };
+  // Almacena fotos en base64
   fotos:string[] = []
 
   constructor() {addIcons({arrowBackOutline,cameraOutline});}
@@ -55,12 +56,11 @@ export class AvisoFormularioComponent  implements OnInit {
   guardarAviso() {
     // Emitir el aviso al componente padre
     this.onSave.emit(this.aviso);
-    //this.onGuardar.emit(this.aviso);
+
     this.cerrarFormulario
 
+    // Notifica al padre para cerrar
     this.cerrarFormulario();
-  // cerrarFormulario() {
-  //   this.onClose.emit(); // Emite el evento para cerrar el formulario
   }
 
 }

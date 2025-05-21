@@ -6,38 +6,35 @@ import { Preferences } from '@capacitor/preferences';
   providedIn: 'root'
 })
 export class AvisosService {
-  private clave = "AGENDA";
+  private clave = "AGENDA"; // Clave para Preferences
 
   constructor() {}
   
-  // metodo creado para el buen funcionamiento de la aplicacion
+  // metodo que recupera el aviso en una lista
   async recuperarAvisos(): Promise<Aviso[]> {
     const listado = await Preferences.get({key: this.clave})
-    // si es nulo se usara un array vacio
+    // Si no hay datos, retorna array vacío
     return JSON.parse(listado.value ?? "[]");
   }
 
-  //metodo para guardar los avisos o publicaciones
+  // metodo que guarda los avisos
   async guardar(aviso:Aviso) {
     const listado:Aviso[] = await this.recuperarAvisos()
     listado.push(aviso)
     Preferences.set({key: this.clave, value: JSON.stringify(listado)});
   }
 
-  //metodo para buscar un aviso
+  // metodo para buscar un aviso
   buscarAviso(titulo:string) {}
 
-  //metodo paraa la carga de la lista, para buscar el aviso que nesesito borrrar
+  // metodo que carga la lista, para buscar aviso a eliminar
   async eliminar(aviso:Aviso): Promise<void> {
     
-    //Recuperar la lista
-    const listado: Aviso[] = await this.recuperarAvisos();
+    const listado: Aviso[] = await this.recuperarAvisos(); //Recuperar la lista
 
-    //aca se filtra la lista del aviso a eliminar
-    const nuevaLista = listado.filter(aviso => aviso.titulo !==aviso.titulo);
+    const nuevaLista = listado.filter(aviso => aviso.titulo !==aviso.titulo); // filtra el aviso
 
-    //se guaraddara la lista ya actualizada
-    await Preferences.set({ key: this.clave, value: JSON.stringify(nuevaLista)});
+    await Preferences.set({ key: this.clave, value: JSON.stringify(nuevaLista)}); // guarda lista actualizada
   } 
 
 }
