@@ -21,9 +21,11 @@ export class HomePage implements OnInit{
   constructor(private avisosService: AvisosService) {}
 
   ngOnInit(): void {
-    
   }
 
+  // Métodos para manejar interacciones
+  
+  // metodo para eliminar avisos
   async deleteAviso(aviso:Aviso) {
     console.log("Eliminando el contacto de :" + aviso.titulo)
     //llamar al metodo (al servicio) que eliminara los avisos
@@ -32,16 +34,19 @@ export class HomePage implements OnInit{
     this.agenda = await this.avisosService.recuperarAvisos()
   }
 
+  // muestra avisiFormularioComponent
   mostrarFormulario() {
     //modifica el estado para mostrar el formulario
     this.mostrandoFormulario = true;
   }
 
+  // muestra avisoListaComponent
   cerrarFormulario() {
     //cambiara el estado para rgrsar a la lista de avisos o publicaciones
     this.mostrandoFormulario = false;
   }
   
+  // metodo que guardara nuevos avisos
   async guardarAviso(aviso: Aviso) {
     // metodo para guardar los nuevos avisos o publicaciones
     await this.avisosService.guardar(aviso);
