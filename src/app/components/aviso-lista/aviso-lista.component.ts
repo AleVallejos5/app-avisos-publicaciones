@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
      IonImg, IonItem, IonList, IonTitle, IonHeader, IonThumbnail, FechaComunitariaPipe, CommonModule],
 })
 export class AvisoListaComponent  implements OnInit {
+  // Control del modal
   isModalPriceOpen: boolean = false;
   avisoAEliminar: Aviso | null = null;
 

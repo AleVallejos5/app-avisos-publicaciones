@@ -15,9 +15,8 @@ import { EventEmitter } from '@angular/core';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, AvisoListaComponent, AvisoFormularioComponent, CommonModule],
 })
 export class HomePage implements OnInit{
-  agenda: Aviso[] = []
-  //controlara si el formulario o la lista se mostrara
-  mostrandoFormulario: boolean = false
+  agenda: Aviso[] = [] // Almacena todos los avisos
+  mostrandoFormulario: boolean = false// Controla qué vista mostrar
 
   constructor(private avisosService: AvisosService) {}
 
